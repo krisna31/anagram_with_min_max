@@ -42,58 +42,78 @@ def main():
   times_dynamic = []
   times_min = []
   times_max = []
-  for _ in range(num_simulations):
-    start_time = time.time_ns()
-    check_anagram_brute_force(str1, str2)
-    end_time = time.time_ns()
-    times_brute_force.append(end_time - start_time)
+  if st.button("Run Simulation"):
+    for _ in range(num_simulations):
+      start_time = time.time_ns()
+      check_anagram_brute_force(str1, str2)
+      end_time = time.time_ns()
+      times_brute_force.append(end_time - start_time)
+      
+      start_time = time.time_ns()
+      check_anagram_greedy(str1, str2)
+      end_time = time.time_ns()
+      times_greedy.append(end_time - start_time)
+      
+      start_time = time.time_ns()
+      check_anagram_dynamic(str1, str2)
+      end_time = time.time_ns()
+      times_dynamic.append(end_time - start_time)
+      
+      start_time = time.time_ns()
+      check_anagram_min_max(str1, str2, min)
+      end_time = time.time_ns()
+      times_min.append(end_time - start_time)
+      
+      start_time = time.time_ns()
+      check_anagram_min_max(str1, str2, max)
+      end_time = time.time_ns()
+      times_max.append(end_time - start_time)
     
-    start_time = time.time_ns()
-    check_anagram_greedy(str1, str2)
-    end_time = time.time_ns()
-    times_greedy.append(end_time - start_time)
+    # st.write("Minimum Execution Time (Brute Force):", np.min(times_brute_force), "nanoseconds")
+    st.write("Maximum Execution Time (Brute Force):", np.max(times_brute_force), "nanoseconds")
     
-    start_time = time.time_ns()
-    check_anagram_dynamic(str1, str2)
-    end_time = time.time_ns()
-    times_dynamic.append(end_time - start_time)
+    # st.write("Minimum Execution Time (Greedy):", np.min(times_greedy), "nanoseconds")
+    st.write("Maximum Execution Time (Greedy):", np.max(times_greedy), "nanoseconds")
     
-    start_time = time.time_ns()
-    check_anagram_min_max(str1, str2, min)
-    end_time = time.time_ns()
-    times_min.append(end_time - start_time)
-    
-    start_time = time.time_ns()
-    check_anagram_min_max(str1, str2, max)
-    end_time = time.time_ns()
-    times_max.append(end_time - start_time)
-  
-  # st.write("Minimum Execution Time (Brute Force):", np.min(times_brute_force), "nanoseconds")
-  st.write("Maximum Execution Time (Brute Force):", np.max(times_brute_force), "nanoseconds")
-  
-  # st.write("Minimum Execution Time (Greedy):", np.min(times_greedy), "nanoseconds")
-  st.write("Maximum Execution Time (Greedy):", np.max(times_greedy), "nanoseconds")
-  
-  # st.write("Minimum Execution Time (Dynamic Programming):", np.min(times_dynamic), "nanoseconds")
-  st.write("Maximum Execution Time (Dynamic Programming):", np.max(times_dynamic), "nanoseconds")
+    # st.write("Minimum Execution Time (Dynamic Programming):", np.min(times_dynamic), "nanoseconds")
+    st.write("Maximum Execution Time (Dynamic Programming):", np.max(times_dynamic), "nanoseconds")
 
-  # st.write("Minimum Execution Time (Min Method [Proposed]):", np.min(times_min), "nanoseconds")
-  st.write("Maximum Execution Time (Min Method [Proposed]):", np.max(times_min), "nanoseconds")
-  
-  # st.write("Minimum Execution Time (Max Method [Proposed]):", np.min(times_max), "nanoseconds")
-  st.write("Maximum Execution Time (Max Method [Proposed]):", np.max(times_max), "nanoseconds")
-  
-  plt.figure(figsize=(10, 6))
-  plt.plot(range(1, num_simulations+1), times_brute_force, label="Brute Force")
-  plt.plot(range(1, num_simulations+1), times_greedy, label="Greedy")
-  plt.plot(range(1, num_simulations+1), times_dynamic, label="Dynamic Programming")
-  plt.plot(range(1, num_simulations+1), times_min, label="Min Method [Proposed]")
-  plt.plot(range(1, num_simulations+1), times_max, label="Max Method [Proposed]")
-  plt.xlabel("Simulation")
-  plt.ylabel("Execution Time (nanoseconds)")
-  plt.title("Execution Time Comparison")
-  plt.legend()
-  st.pyplot(plt)
+    # st.write("Minimum Execution Time (Min Method [Proposed]):", np.min(times_min), "nanoseconds")
+    st.write("Maximum Execution Time (Min Method [Proposed]):", np.max(times_min), "nanoseconds")
+    
+    # st.write("Minimum Execution Time (Max Method [Proposed]):", np.min(times_max), "nanoseconds")
+    st.write("Maximum Execution Time (Max Method [Proposed]):", np.max(times_max), "nanoseconds")
+    
+    plt.figure(figsize=(10, 6))
+    plt.plot(range(1, num_simulations+1), times_brute_force, label="Brute Force")
+    plt.plot(range(1, num_simulations+1), times_greedy, label="Greedy")
+    plt.plot(range(1, num_simulations+1), times_dynamic, label="Dynamic Programming")
+    plt.plot(range(1, num_simulations+1), times_min, label="Min Method [Proposed]")
+    plt.plot(range(1, num_simulations+1), times_max, label="Max Method [Proposed]")
+    plt.xlabel("Simulation")
+    plt.ylabel("Execution Time (nanoseconds)")
+    plt.title("Execution Time Comparison")
+    plt.legend()
+    st.pyplot(plt)
+  else:
+    st.write("Click the 'Run Simulation' button to start the simulation.")
+    st.write("Maximum Execution Time (Brute Force): xxx nanoseconds")
+    st.write("Maximum Execution Time (Greedy): xxx nanoseconds")
+    st.write("Maximum Execution Time (Dynamic Programming): xxx nanoseconds")
+    st.write("Maximum Execution Time (Min Method [Proposed]): xxx nanoseconds")
+    st.write("Maximum Execution Time (Max Method [Proposed]): xxx nanoseconds")
+    
+    plt.figure(figsize=(10, 6))
+    plt.plot(0,0, label="Brute Force")
+    plt.plot(0,0, label="Greedy")
+    plt.plot(0,0, label="Dynamic Programming")
+    plt.plot(0,0, label="Min Method [Proposed]")
+    plt.plot(0,0, label="Max Method [Proposed]")
+    plt.xlabel("Simulation")
+    plt.ylabel("Execution Time (nanoseconds)")
+    plt.title("Execution Time Comparison")
+    plt.legend()
+    st.pyplot(plt)
 
 if __name__ == "__main__":
   main()
