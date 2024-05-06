@@ -15,8 +15,9 @@ Examples
 
 '''
 from check_anagram.brute_force import check_anagram_brute_force
-from check_anagram.greedy import check_anagram_greedy
-from check_anagram.dynamic_programming import check_anagram_dynamic
+from check_anagram.bubble_sort import check_anagram_bubble_sort
+from check_anagram.frequency_table import check_anagram_frequency_table
+from check_anagram.hash_map import check_anagram_hash_map
 from check_anagram.min_max import check_anagram_min_max
 import streamlit as st
 import time
@@ -27,8 +28,8 @@ import pandas as pd
 # pip3 freeze > requirements.txt  # Python3
 # pip freeze > requirements.txt  # Python2
 # print(check_anagram_brute_force("listen", "silent"))  # Output: True
-# print(check_anagram_greedy("listen", "silent"))  # Output: True
-# print(check_anagram_dynamic("listen", "silent"))  # Output: True
+# print(check_anagram_bubble_sort("listen", "silent"))  # Output: True
+# print(check_anagram_frequency_table("listen", "silent"))  # Output: True
 # print(check_anagram_min_max("saxm", "mxas"))
 def measure_execution_time(algorithm, *args):
   start_time = time.time_ns()
@@ -49,16 +50,18 @@ def plot_execution_times(times_dict, num_simulations):
 def run_simulation(num_simulations, str1, str2):
     times_dict = {
         "Brute Force": [],
-        "Greedy": [],
-        "Dynamic Programming": [],
+        "Bubble Sort": [],
+        "Frequency Table": [],
+        "Hash Map": [],
         "Min Method [Proposed]": [],
         "Max Method [Proposed]": []
     }
 
     for _ in range(num_simulations):
         times_dict["Brute Force"].append(measure_execution_time(check_anagram_brute_force, str1, str2))
-        times_dict["Greedy"].append(measure_execution_time(check_anagram_greedy, str1, str2))
-        times_dict["Dynamic Programming"].append(measure_execution_time(check_anagram_dynamic, str1, str2))
+        times_dict["Bubble Sort"].append(measure_execution_time(check_anagram_bubble_sort, str1, str2))
+        times_dict["Frequency Table"].append(measure_execution_time(check_anagram_frequency_table, str1, str2))
+        times_dict["Hash Map"].append(measure_execution_time(check_anagram_hash_map, str1, str2))
         times_dict["Min Method [Proposed]"].append(measure_execution_time(check_anagram_min_max, str1, str2, min))
         times_dict["Max Method [Proposed]"].append(measure_execution_time(check_anagram_min_max, str1, str2, max))
 
@@ -85,15 +88,13 @@ def run_simulation(num_simulations, str1, str2):
     summary.rename(columns={"Mean": "Mean (nanoseconds)", "Standard Deviation": "Standard Deviation (nanoseconds)", "Minimum": "Minimum (nanoseconds)", "Q1": "Q1 (nanoseconds)", "Median": "Median (nanoseconds)", "Q3": "Q3 (nanoseconds)", "Maximum": "Maximum (nanoseconds)"}, inplace=True)
     summary.index.name = "Algorithm"
     
-    summary.drop(["mean", "std", "min", "25%", "50%", "75%", "max"], axis=1, inplace=True)  # Remove old columns
-    summary.sort_values(by="Mean (nanoseconds)", ascending=False, inplace=True)
+    summary.drop(["mean", "std", "min", "25%", "50%", "75%", "max"], axis=1, inplace=True)
+    summary = summary.sort_values(by="Mean (nanoseconds)", ascending=False)
 
-    st.write("### Execution Time Statistics")
+    st.write("### Execution Time Statistics sort by mean (descending)")
     st.table(summary)
 
     plot_execution_times(times_dict, num_simulations)
-
-
 
 def main():
     st.title("Anagram Check Simulation")

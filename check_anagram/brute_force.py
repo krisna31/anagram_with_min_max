@@ -10,7 +10,7 @@ def generate_anagrams(s):
 
 def check_anagram_brute_force(str1, str2):
   '''
-    **Pendekatan Brute Force**: 
+    Pendekatan Brute Force: 
     - Worst Case: O(n!)
     - Best Case: O(n!)
     1. Buat semua kemungkinan anagram dari string pertama.

@@ -7,9 +7,9 @@ def frequency_table(s):
       freq_table[char] = 1
   return freq_table
 
-def check_anagram_dynamic(str1, str2):
+def check_anagram_frequency_table(str1, str2):
   '''
-    **Pendekatan Dynamic Programming**:
+    Pendekatan Frequency Table:
     - Worst Case: O(n)
     - Best Case: O(n)
     1. Buat tabel frekuensi karakter untuk kedua string.

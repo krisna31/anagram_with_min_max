@@ -8,9 +8,9 @@ def sort_string(s):
     
     return ''.join(arr)
 
-def check_anagram_greedy(str1, str2):
+def check_anagram_bubble_sort(str1, str2):
   '''
-    **Pendekatan Greedy**:
+    Pendekatan Bubble Sort:
     - Worst Case: O(n^2)
     - Best Case: O(n^2)
     1. Urutkan karakter-karakter dalam kedua string.
