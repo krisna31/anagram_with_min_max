@@ -91,7 +91,7 @@ def run_simulation(num_simulations, str1, str2):
     summary.drop(["mean", "std", "min", "25%", "50%", "75%", "max"], axis=1, inplace=True)
     summary = summary.sort_values(by="Mean (nanoseconds)", ascending=False)
 
-    st.write("### Execution Time Statistics sort by mean (descending)")
+    st.write("### Execution Time Statistics")
     st.table(summary)
 
     plot_execution_times(times_dict, num_simulations)
