@@ -32,9 +32,9 @@ import pandas as pd
 # print(check_anagram_frequency_table("listen", "silent"))  # Output: True
 # print(check_anagram_min_max("saxm", "mxas"))
 def measure_execution_time(algorithm, *args):
-  start_time = time.time_ns()
+  start_time = time.perf_counter_ns()
   algorithm(*args)
-  end_time = time.time_ns()
+  end_time = time.perf_counter_ns()
   return end_time - start_time
 
 def plot_execution_times(times_dict, num_simulations):
@@ -108,9 +108,9 @@ def main():
         return
     elif run_simulation_button:
         with st.spinner("Running Simulation..."):
-            start_time = time.time()
+            start_time = time.perf_counter_ns()
             run_simulation(num_simulations, str1, str2)
-            end_time = time.time()
+            end_time = time.perf_counter_ns()
             st.success(f"Simulation completed in {end_time - start_time:.2f} seconds")
     else:
       st.write("CLick on Run Simulation Button to check the anagram of the given strings.")
