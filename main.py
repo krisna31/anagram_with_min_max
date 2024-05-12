@@ -111,7 +111,7 @@ def main():
             start_time = time.perf_counter_ns()
             run_simulation(num_simulations, str1, str2)
             end_time = time.perf_counter_ns()
-            st.success(f"Simulation completed in {end_time - start_time:.2f} seconds")
+            st.success(f"Simulation completed in {(end_time - start_time) / 1e9:.2f} seconds")
     else:
       st.write("CLick on Run Simulation Button to check the anagram of the given strings.")
       
