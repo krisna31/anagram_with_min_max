@@ -19,6 +19,7 @@ from check_anagram.bubble_sort import check_anagram_bubble_sort
 from check_anagram.frequency_table import check_anagram_frequency_table
 from check_anagram.hash_map import check_anagram_hash_map
 from check_anagram.min_max import check_anagram_min_max
+from check_anagram.min_max_explain import check_anagram_min_max_explain
 import streamlit as st
 import time
 import matplotlib.pyplot as plt
@@ -112,6 +113,12 @@ def main():
             run_simulation(num_simulations, str1, str2)
             end_time = time.perf_counter_ns()
             st.success(f"Simulation completed in {(end_time - start_time) / 1e9:.2f} seconds")
+
+            # show divider
+            st.title("Detailed Explanation of the Min Proposed Method")
+            check_anagram_min_max_explain(str1, str2)
+            st.title("Detailed Explanation of the Max Proposed Method")
+            check_anagram_min_max_explain(str1, str2, max)
     else:
       st.write("CLick on Run Simulation Button to check the anagram of the given strings.")
       
