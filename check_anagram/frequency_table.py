@@ -15,7 +15,6 @@ def check_anagram_frequency_table(str1, str2):
     1. Buat tabel frekuensi karakter untuk kedua string.
     2. Bandingkan tabel frekuensi karakter.
     3. Jika tabel frekuensi karakter sama, kembalikan True, jika tidak, kembalikan False.
-
   '''
   freq_table_str1 = frequency_table(str1)
   freq_table_str2 = frequency_table(str2)

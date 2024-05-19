@@ -2,16 +2,16 @@
   An anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
 
   DESCRIPTION:
-An anagram is the result of rearranging the letters of a word to produce a new word (see wikipedia).
+  An anagram is the result of rearranging the letters of a word to produce a new word.
 
-Note: anagrams are case insensitive
+  Note: anagrams are case insensitive
 
-Complete the function to return true if the two arguments given are anagrams of each other; return false otherwise.
+  Complete the function to return true if the two arguments given are anagrams of each other; return false otherwise.
 
-Examples
-"foefet" is an anagram of "toffee"
+  Examples
+  "foefet" is an anagram of "toffee"
 
-"Buckethead" is an anagram of "DeathCubeK”
+  "Buckethead" is an anagram of "DeathCubeK”
 
 '''
 from check_anagram.brute_force import check_anagram_brute_force
@@ -25,13 +25,7 @@ import time
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-# pip install streamlit numpy matplotlib  
-# pip3 freeze > requirements.txt  # Python3
-# pip freeze > requirements.txt  # Python2
-# print(check_anagram_brute_force("listen", "silent"))  # Output: True
-# print(check_anagram_bubble_sort("listen", "silent"))  # Output: True
-# print(check_anagram_frequency_table("listen", "silent"))  # Output: True
-# print(check_anagram_min_max("saxm", "mxas"))
+
 def measure_execution_time(algorithm, *args):
   start_time = time.perf_counter_ns()
   algorithm(*args)
