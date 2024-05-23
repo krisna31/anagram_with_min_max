@@ -1,0 +1,19 @@
+BEGIN
+    IF length(str1) ≠ length(str2) THEN
+        RETURN False
+    ENDIF
+
+    WHILE str1 IS NOT EMPTY DO
+        min_or_max_char_str_1 ← MIN/MAX character in str1
+        min_or_max_char_str_2 ← MIN/MAX character in str2
+
+        IF min_or_max_char_str_1 ≠ min_or_max_char_str_2 THEN
+            RETURN False
+        ENDIF
+
+        REMOVE occurrence char of  min_char_str_1 FROM str1
+        REMOVE occurrence char of min_or_max_char_str_2 FROM str2
+    ENDWHILE
+
+    RETURN True
+END
