@@ -94,8 +94,8 @@ def run_simulation(num_simulations, str1, str2):
 def main():
     st.title("Anagram Check Simulation")
     num_simulations = st.number_input("Number of Simulations:", min_value=1, step=1, value=10)
-    str1 = st.text_input("Input String 1:", value="heksakosioiheksekontaheksafobia")
-    str2 = st.text_input("Input String 2:", value="heksakosioiheksekontaheksafobia")
+    str1 = st.text_input("Input String 1:", value="banteng")
+    str2 = st.text_input("Input String 2:", value="bentang")
     run_simulation_button = st.button("Run Simulation")
 
     if not str1.strip() or not str2.strip():
